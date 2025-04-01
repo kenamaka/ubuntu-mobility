@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ubuntu-mobility",
+    "name": "Ubuntu Mobility",
     "slug": "ubuntu-mobility",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,31 +11,48 @@
     "ios": {
       "supportsTablet": true
     },
+    "splash": {
+      "image": "./assets/images/icon-blue.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ff6700"
+    },
+
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/images/logo.png",
+        "backgroundColor": "#ff6700"
+      },
+      "package": "com.kenamaka550.ubuntumobility"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/logo.png"
     },
     "plugins": [
       "expo-router",
+      ["@react-native-firebase/app", "@react-native-firebase/auth"],
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#ff6700"
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "f60fe35c-2181-4801-bf07-58b33f12770e"
+      }
     }
   }
 }

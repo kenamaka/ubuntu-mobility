@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "196340367288",
+    "project_id": "ubuntu-mobility",
+    "storage_bucket": "ubuntu-mobility.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196340367288:android:3d15384ba04ee45d5f194d",
+        "android_client_info": {
+          "package_name": "com.kenamaka550.ubuntumobility"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196340367288-5p1vsfjctfv7aqi6bekt8mellrchkgc7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kenamaka550.ubuntumobility",
+            "certificate_hash": "e5c5c9b4b621e678a3415a5daca489191c66c1a4"
+          }
+        },
+        {
+          "client_id": "196340367288-let6f260ms5msdbpugka5mn9orre5s86.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kenamaka550.ubuntumobility",
+            "certificate_hash": "a9c37d191a044e16ecbb17a5c4222c28d7cc824e"
+          }
+        },
+        {
+          "client_id": "196340367288-but6fht48q4150cvimmlje4c4mbhqiqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFLDSRXq6goxGueIt4wMSeCx6o4Kjb4RE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196340367288-but6fht48q4150cvimmlje4c4mbhqiqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
