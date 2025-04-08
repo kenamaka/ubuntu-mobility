@@ -17,7 +17,9 @@ export default function RootLayout() {
         name="account"
         options={{
           headerShown: false,
-          // tabBarIcon: ({focused}) => <TabIcons focused={focused} source={icons.} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcons focused={focused} source={icons.home} />
+          ),
         }}
       />
       <Tabs.Screen name="home" options={{ headerShown: false }} />
