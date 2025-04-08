@@ -16,7 +16,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ff6700"
     },
-
     "android": {
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
@@ -32,7 +31,10 @@
     },
     "plugins": [
       "expo-router",
-      ["@react-native-firebase/app", "@react-native-firebase/auth"],
+      [
+        "@react-native-firebase/app",
+        "@react-native-firebase/auth"
+      ],
       [
         "expo-splash-screen",
         {
@@ -41,7 +43,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ff6700"
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true

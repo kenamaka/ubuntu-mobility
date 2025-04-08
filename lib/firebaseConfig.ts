@@ -1,18 +1,19 @@
-// firebaseConfig.ts
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrk52cbgDq6BDdrVj3cRkju6MBe0UOemc",
   authDomain: "ubuntu-mobility.firebaseapp.com",
   projectId: "ubuntu-mobility",
-  storageBucket: "ubuntu-mobility.appspot.com",
+  storageBucket: "ubuntu-mobility.firebasestorage.app",
   messagingSenderId: "196340367288",
-  appId: "1:196340367288:android:3d15384ba04ee45d5f194d",
+  appId: "1:196340367288:web:a92d04746229ddc15f194d",
+  measurementId: "G-FH8781TTRY",
 };
 
-// ✅ Initialize Firebase once
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
-export { app, auth };
+export { firebaseConfig };
+export { firebase };
