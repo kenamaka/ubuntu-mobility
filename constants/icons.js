@@ -6,17 +6,21 @@ import logout from "../assets/icons/out.png";
 import point from "../assets/icons/point.png";
 import email from "../assets/icons/email.png";
 import right from "../assets/icons/right-arrow.png";
-import list from "../assets/icons/list.png";
+import ride from "../assets/icons/list.png";
 import map from "../assets/icons/map.png";
 import home from "../assets/icons/home.png";
+import google from "../assets/icons/google.png";
+import profile from "../assets/icons/profile.png";
 export default {
   person,
   email,
   right,
+  profile,
   point,
   eye,
-  list,
+  ride,
   map,
+  home,
   eyehide,
   lock,
   logout,

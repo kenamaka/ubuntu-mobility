@@ -13,7 +13,7 @@ import {
 import { getLocales } from "expo-localization";
 import { ReactNativeModal } from "react-native-modal";
 
-import { images } from "../../../constants";
+import { icons, images } from "../../../constants";
 import PhoneInput from "react-native-phone-number-input";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -29,7 +29,7 @@ const verify = () => {
   const phoneInputRef = useRef(null);
   const recaptchaVerifier = useRef(null); // Use RecaptchaVerifier from Firebase
   const [verification, setVerification] = useState({
-    state: "pending",
+    state: "default",
     code: "",
     error: "",
   });
@@ -150,7 +150,7 @@ const verify = () => {
           if (verification.state === "success") setIsVerified(true);
         }}
       >
-        <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
+        <View className="bg-white flex flex= px-7 py-9 rounded-2xl min-h-[300px]">
           <Text
             className="
           text-2xl mb-2 font-extrabold"
@@ -158,14 +158,14 @@ const verify = () => {
             Verification
           </Text>
           <Text className=" text-black mb-5">
-            Enter the verification code sent to your {phone}
+            Enter the verification code sent to {phone}
           </Text>
           <View className=" mt-5">
             <Text className="text-lg font-medium text-black mb-3">Code</Text>
             <View className=" flex flex-row justify-start items-center relative border-b-2 focus:border-neutral-500  rounded-full border border-neutral-100   bg-neutral-100 ">
               <Image source={icons.lock} className="h-6 w-6 ml-4" />
               <TextInput
-                className="w-full"
+                className="w-full text-xl"
                 placeholder="123456"
                 keyboardType="numeric"
                 value={code}
@@ -178,20 +178,11 @@ const verify = () => {
                   {verification.code}
                 </Text>
               )}
-              <View>
-                <TouchableOpacity
-                  className="w-full mt-7 rounded-full flex flex-row justify-center p-4 items-center shadow-md shadow-neutral-400/70 bg-green-500"
-                  onPress={verifyOTP}
-                >
-                  <Text className="text-lg font-bold text-black ">
-                    {" "}
-                    Verify OTP
-                  </Text>
-                </TouchableOpacity>
-                {/* <Text>By Signing up, you agree to our Terms and Privacy Policy.</Text> */}
-              </View>
             </View>
           </View>
+          <TouchableOpacity className="w-full bg-green-500 mt-7 rounded-full flex flex-row justify-center p-4 items-center ">
+            <Text className="text-lg  font-bold "> Verify OTP </Text>
+          </TouchableOpacity>
         </View>
       </ReactNativeModal>{" "}
       <ReactNativeModal isVisible={isVerified}>
