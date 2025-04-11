@@ -36,7 +36,7 @@ const onboarding = () => {
     setPageloading(true); // Start loader immediately
     setTimeout(() => {
       router.replace("/(root)/(auth)/verify");
-    }, 6000); // slight delay to show spinner for UX smoothness
+    }, 300); // slight delay to show spinner for UX smoothness
   };
 
   if (pageloading) {

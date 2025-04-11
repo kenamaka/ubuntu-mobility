@@ -12,30 +12,48 @@ import {
 } from "react-native";
 import { getLocales } from "expo-localization";
 import { ReactNativeModal } from "react-native-modal";
-
+import { AppState } from "react-native";
+import { supabase } from "../../../lib/supabaseConfig";
+import { Button, Input } from "@rneui/themed";
 import { icons, images } from "../../../constants";
 import PhoneInput from "react-native-phone-number-input";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
-import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 import { router } from "expo-router";
 import { firebaseConfig, firebase } from "../../../lib/firebaseConfig";
+import SocialSignin from "./SocialSignin";
+import { useSignUp } from "@clerk/clerk-expo";
+// Tells Supabase Auth to continuously refresh the session automatically if
+// the app is in the foreground. When this is added, you will continue to receive
+// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
+// if the user's session is terminated. This should only be registered once.
+AppState.addEventListener("change", (state) => {
+  if (state === "active") {
+    supabase.auth.startAutoRefresh();
+  } else {
+    supabase.auth.stopAutoRefresh();
+  }
+});
 
 const verify = () => {
+  // phone input field data
   const [phone, setPhone] = useState("");
+  const [code, setCode] = useState("");
+  const [loading, setLoading] = useState(false);
   const [verificationId, setVerificationId] = useState(null);
-  const textInputRef = useRef(null);
-  const [detectCountry, setDetectCountry] = useState("NG");
-  const phoneInputRef = useRef(null);
-  const recaptchaVerifier = useRef(null); // Use RecaptchaVerifier from Firebase
   const [verification, setVerification] = useState({
     state: "default",
     code: "",
     error: "",
   });
   const [isVerified, setIsVerified] = useState(false);
-  const [code, setCode] = useState("");
 
+  // phone input field Component
+  const textInputRef = useRef(null);
+  const [detectCountry, setDetectCountry] = useState("NG");
+  const phoneInputRef = useRef(null);
+
+  // loading country code and region
   useEffect(() => {
     const loadPickerData = async () => {
       const locales = getLocales();
@@ -45,16 +63,36 @@ const verify = () => {
     loadPickerData();
   }, []);
 
-  const sendOTP = () => {
-    // Alert.alert(phone);
-    setVerification({ ...verification, state: "pending" });
-    const phoneProvider = new firebase.auth.PhoneAuthProvider();
-    phoneProvider
-      .verifyPhoneNumber(phone, recaptchaVerifier.current)
-      .then(setVerificationId);
-    setPhone("");
-    console.log("OTP Sent!");
-  };
+  // const sendOTP = () => {
+  //   // Alert.alert(phone);
+  //   setVerification({ ...verification, state: "pending" });
+  //   const phoneProvider = new firebase.auth.PhoneAuthProvider();
+  //   phoneProvider
+  //     .verifyPhoneNumber(phone, recaptchaVerifier.current)
+  //     .then(setVerificationId);
+  //   setPhone("");
+  //   console.log("OTP Sent!");
+  // };
+  async function sendOTP() {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signInWithOtp({ phone });
+      console.log({ data });
+      if (error) {
+        throw new Error(error.message);
+      }
+      setVerification({ ...verification, state: "pending" });
+    } catch (error) {
+      setLoading(false);
+      console.log(error.message);
+      Alert.alert("Error", error.message);
+      setVerification({
+        ...verification,
+        state: "failed",
+        error: error.message,
+      });
+    }
+  }
   const verifyOTP = () => {
     const credentials = firebase.auth.PhoneAuthProvider.credential(
       verificationId,
@@ -79,10 +117,10 @@ const verify = () => {
 
   return (
     <SafeAreaView className="flex-1 h-full  bg-[#ff6700]">
-      <FirebaseRecaptchaVerifierModal
+      {/* <FirebaseRecaptchaVerifierModal
         ref={recaptchaVerifier}
         firebaseConfig={firebaseConfig}
-      />
+      /> */}
       <View className=" flex-4 w-full mt-4 px-10">
         <Image
           source={images.icon_blue}
@@ -122,7 +160,7 @@ const verify = () => {
                   ref={phoneInputRef}
                   defaultCode={detectCountry}
                   layout="first"
-                  autoFocus={true}
+                  // autoFocus={true}
                   defaultValue={phone}
                   onChangeFormattedText={setPhone}
                   withShadow={false}
@@ -136,10 +174,15 @@ const verify = () => {
 
               <TouchableOpacity
                 onPress={sendOTP}
-                className="w-full mt-7 rounded-full flex flex-row justify-center p-4 items-center shadow-md shadow-neutral-400/70 bg-[#ff6700]"
+                className="w-full mt-5 rounded-md flex flex-row justify-center p-4 items-center  bg-[#ff6700]"
               >
-                <Text className="text-xl font-bold text-black">Send OTP</Text>
+                {loading ? (
+                  <ActivityIndicator size="large" color="#000" />
+                ) : (
+                  <Text className="text-xl font-bold text-black">Send OTP</Text>
+                )}
               </TouchableOpacity>
+              <SocialSignin />
             </KeyboardAvoidingView>
           </View>
         </TouchableOpacity>
@@ -180,7 +223,10 @@ const verify = () => {
               )}
             </View>
           </View>
-          <TouchableOpacity className="w-full bg-green-500 mt-7 rounded-full flex flex-row justify-center p-4 items-center ">
+          <TouchableOpacity
+            className="w-full bg-green-500 mt-7 rounded-full flex flex-row justify-center p-4 items-center "
+            onPress={verifyOTP}
+          >
             <Text className="text-lg  font-bold "> Verify OTP </Text>
           </TouchableOpacity>
         </View>
@@ -202,9 +248,9 @@ const verify = () => {
               setIsVerified(false);
               router.push("/(root)/(auth)/signup");
             }}
-            className="w-full mt-7 mb-7 rounded-full flex flex-row justify-center p-6 items-center  border border-gray-950 "
+            className="w-full mt-7 mb-7 rounded-full flex flex-row justify-center p-4 items-center bg-[#011228]"
           >
-            <Text className="text-xl font-bold text-black "> Continue </Text>
+            <Text className="text-xl font-bold text-white "> Continue </Text>
           </TouchableOpacity>
         </View>
       </ReactNativeModal>

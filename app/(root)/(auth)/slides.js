@@ -21,14 +21,14 @@ export default [
     desc: "Get quick access to ambulances, towing vans, and roadside assistance anytime, anywhere.",
     image: images.slide3,
   },
+  // {
+  //   id: 3,
+  //   title: "Shop for Afrimade Products!",
+  //   desc: "Shop your favorites, earn rewards, and unlock exclusive deals—all in one powerful app. ",
+  //   image: images.slide5,
+  // },
   {
     id: 3,
-    title: "Shop for Afrimade Products!",
-    desc: "Shop your favorites, earn rewards, and unlock exclusive deals—all in one powerful app. ",
-    image: images.slide5,
-  },
-  {
-    id: 4,
     title: "More Than Just a Ride!",
     desc: "Shop your favorites, earn rewards, and unlock exclusive deals—all in one powerful app. ",
     image: images.slide4,

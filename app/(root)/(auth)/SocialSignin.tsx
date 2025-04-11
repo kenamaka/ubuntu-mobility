@@ -37,22 +37,59 @@
 
 // export default GoogleSignIn;
 
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from "react-native";
+import React, { useState } from "react";
 import { icons, images } from "@/constants";
+import { router } from "expo-router";
 
-const GoogleSignin = () => {
+const SocialSignin = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleEmail = () => {
+    setLoading(true); // Start loader immediately
+    setTimeout(() => {
+      router.push("/(root)/(auth)/email");
+    }, 300); // slight delay to show spinner for UX smoothness
+  };
+
   return (
-    <View className="flex flex-row justify-center items-center mt-4 gap-x-3">
-      <View className="flex-1 h-[1px] bg-gray-100" />
+    <View className=" mt-10 items-center justify-center">
+      <View className=" h-[1px] flex-1 bg-gray-400" />
 
       <Text>Or</Text>
-      <View className="flex-1 h-[1px] bg-gray-100" />
-      <TouchableOpacity>
-        <View className="flex flex-row justify-center items-center bg-[#4285F4] px-4 py-2 rounded-full gap-x-3">
-          <Image className="w-5 h-5 mx-2" source={icons.google} />
-          <Text className="text-white font-semibold">Sign in with Google</Text>
-        </View>
+      <View className=" h-[1px] flex-1 bg-gray-400" />
+      <TouchableOpacity className="w-full mt-4 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100">
+        <Image className="w-5 h-5 mx-2" source={icons.google} />
+        <Text className="text-xl font-semibold text-black">
+          Continue with Google
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity className="w-full mt-4 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100">
+        <Image className="w-5 h-5 mx-2" source={icons.apple} />
+        <Text className="text-xl font-semibold text-black">
+          Continue with Apple
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={handleEmail}
+        className="w-full mt-4 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100"
+      >
+        {loading ? (
+          <ActivityIndicator size="large" color="#000" />
+        ) : (
+          <>
+            <Image className="w-5 h-5 mx-2" source={icons.mail} />
+            <Text className="text-xl font-semibold text-black">
+              Continue with Email
+            </Text>
+          </>
+        )}
       </TouchableOpacity>
 
       <View />
@@ -60,4 +97,4 @@ const GoogleSignin = () => {
   );
 };
 
-export default GoogleSignin;
+export default SocialSignin;

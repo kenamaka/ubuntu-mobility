@@ -28,12 +28,17 @@ const Signup = () => {
             resizeMode="contain"
           />
         </View>
-        <Text className="text-3xl font-bold text-black">Sign Up</Text>
+        <Text className="text-3xl font-bold text-black">Set Up</Text>
         <View className=" mt-5">
           <Text className="text-lg font-medium text-black mb-3">Name</Text>
           <View className=" flex flex-row justify-start items-center relative border-b-2 focus:border-neutral-500  rounded-full border border-neutral-100   bg-neutral-100 ">
             <Image source={icons.person} className="h-6 w-6 ml-4" />
-            <TextInput className="w-full" placeholder="Enter your name" />
+            <TextInput
+              autoFocus
+              className="w-full"
+              placeholder="Enter your name"
+              keyboardType="default"
+            />
           </View>
         </View>
         <View className=" mt-5">
@@ -46,16 +51,7 @@ const Signup = () => {
             />
           </View>
         </View>
-        <View className=" mt-5">
-          <Text className="text-lg font-medium text-black mb-3">Phone</Text>
-          <View className=" flex flex-row justify-start items-center relative border-b-2 focus:border-neutral-500  rounded-full border border-neutral-100   bg-neutral-100 ">
-            <Image source={icons.person} className="h-6 w-6 ml-4" />
-            <TextInput
-              className="w-full"
-              placeholder="Enter your mobile number"
-            />
-          </View>
-        </View>
+
         <View className=" mt-5">
           <Text className="text-lg font-medium text-black mb-3">Password</Text>
           <View className=" flex flex-row justify-start items-center relative border-b-2 focus:border-neutral-500  rounded-full border border-neutral-100   bg-neutral-100 ">

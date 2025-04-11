@@ -13,6 +13,7 @@ export default function RootLayout() {
       <Stack.Screen name="signin" options={{ headerShown: false }} />
       <Stack.Screen name="signup" options={{ headerShown: false }} />
       <Stack.Screen name="verify" options={{ headerShown: false }} />
+      <Stack.Screen name="email" options={{ headerShown: false }} />
       <StatusBar style="dark" backgroundColor="#ffffff" />
     </Stack>
   );

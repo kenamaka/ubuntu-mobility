@@ -9,8 +9,10 @@ import icon_orange from "../assets/images/icon-orange.png";
 import icon_white from "../assets/images/icon-white.png";
 import otp from "../assets/images/otp.png";
 import check from "../assets/images/check.png";
+import setup from "../assets/images/setup.jpg";
 export default {
   slide1,
+  setup,
   slide2,
   slide3,
   slide4,

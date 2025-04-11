@@ -6,13 +6,17 @@ import logout from "../assets/icons/out.png";
 import point from "../assets/icons/point.png";
 import email from "../assets/icons/email.png";
 import right from "../assets/icons/right-arrow.png";
+import left from "../assets/icons/left-arrow.png";
 import ride from "../assets/icons/list.png";
 import map from "../assets/icons/map.png";
 import home from "../assets/icons/home.png";
 import google from "../assets/icons/google.png";
 import profile from "../assets/icons/profile.png";
+import apple from "../assets/icons/apple-logo.png";
+import mail from "../assets/icons/mail.png";
 export default {
   person,
+  left,
   email,
   right,
   profile,
@@ -22,6 +26,8 @@ export default {
   map,
   home,
   eyehide,
+  mail,
+  apple,
   lock,
   logout,
   google,
