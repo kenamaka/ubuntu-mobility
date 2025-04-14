@@ -7,7 +7,7 @@ LogBox.ignoreLogs([
 
 export class Home extends Component {
   render() {
-    return <Redirect href="/(root)/(auth)/onboarding" />;
+    return <Redirect href="/(auth)/onboarding" />;
   }
 }
 

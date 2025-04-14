@@ -6,19 +6,21 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import { images } from "../../../constants";
+import { icons, images } from "../../constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Swiper from "react-native-swiper";
 import slides from "./slides";
 import { useRouter } from "expo-router";
 import { Asset } from "expo-asset";
-
+import { useAuth } from "@clerk/clerk-expo";
 const onboarding = () => {
   const router = useRouter();
   const swiperRef = useRef<Swiper>(null);
   const [loading, setLoading] = useState(true);
   const [pageloading, setPageloading] = useState(false);
+  const { signOut } = useAuth();
   useEffect(() => {
+    // signOut();
     const preloadImages = async () => {
       try {
         await Promise.all(slides.map((slide) => Asset.loadAsync(slide.image)));
@@ -35,7 +37,8 @@ const onboarding = () => {
   const handleVerify = () => {
     setPageloading(true); // Start loader immediately
     setTimeout(() => {
-      router.replace("/(root)/(auth)/verify");
+      router.push("/(tabs)/home");
+      // router.replace("/(auth)/verify");
     }, 300); // slight delay to show spinner for UX smoothness
   };
 
@@ -62,8 +65,13 @@ const onboarding = () => {
           className="h-[70px] w-[70px]"
           resizeMode="contain"
         />
-        <TouchableOpacity onPress={handleVerify}>
-          <Text className="text-2xl font-bold">Skip</Text>
+        <TouchableOpacity
+          onPress={handleVerify}
+          className="   flex flex-row justify-center p-4 items-center    bg-transparent   "
+        >
+          <Text className="text-2xl font-bold">Skip </Text>
+
+          <Image source={icons.right} className="h-[18px] w-[18px]" />
         </TouchableOpacity>
       </View>
 

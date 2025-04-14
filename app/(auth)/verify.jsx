@@ -13,14 +13,13 @@ import {
 import { getLocales } from "expo-localization";
 import { ReactNativeModal } from "react-native-modal";
 import { AppState } from "react-native";
-import { supabase } from "../../../lib/supabaseConfig";
+import { supabase } from "../../lib/supabaseConfig";
 import { Button, Input } from "@rneui/themed";
-import { icons, images } from "../../../constants";
+import { icons, images } from "../../constants";
 import PhoneInput from "react-native-phone-number-input";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
-import { firebaseConfig, firebase } from "../../../lib/firebaseConfig";
 import SocialSignin from "./SocialSignin";
 import { useSignUp } from "@clerk/clerk-expo";
 // Tells Supabase Auth to continuously refresh the session automatically if
@@ -63,16 +62,6 @@ const verify = () => {
     loadPickerData();
   }, []);
 
-  // const sendOTP = () => {
-  //   // Alert.alert(phone);
-  //   setVerification({ ...verification, state: "pending" });
-  //   const phoneProvider = new firebase.auth.PhoneAuthProvider();
-  //   phoneProvider
-  //     .verifyPhoneNumber(phone, recaptchaVerifier.current)
-  //     .then(setVerificationId);
-  //   setPhone("");
-  //   console.log("OTP Sent!");
-  // };
   async function sendOTP() {
     setLoading(true);
     try {
@@ -230,7 +219,7 @@ const verify = () => {
             <Text className="text-lg  font-bold "> Verify OTP </Text>
           </TouchableOpacity>
         </View>
-      </ReactNativeModal>{" "}
+      </ReactNativeModal>
       <ReactNativeModal isVisible={isVerified}>
         <View className=" justify-center items-center bg-white px-7 py-9 min-h-[300px] rounded-2xl">
           <Image
@@ -246,7 +235,7 @@ const verify = () => {
           <TouchableOpacity
             onPress={() => {
               setIsVerified(false);
-              router.push("/(root)/(auth)/signup");
+              router.push("/(auth)/signup");
             }}
             className="w-full mt-7 mb-7 rounded-full flex flex-row justify-center p-4 items-center bg-[#011228]"
           >

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import React, { useEffect, useRef } from "react";
 import PhoneInput from "react-native-phone-number-input";
-import { images } from "../../../constants";
+import { images } from "../../constants";
 import { getLocales } from "expo-localization";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";

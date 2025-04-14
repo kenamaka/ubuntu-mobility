@@ -12,6 +12,7 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts",
-    "app/(root)/(auth)/verify.jsx"
+    "app/(auth)/verify.jsx",
+    "app/(tabs)/_layout.tsx"
   ]
 }
