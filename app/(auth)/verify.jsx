@@ -121,7 +121,7 @@ const verify = () => {
           <Image
             source={images.otp}
             alt="Ubuntu logo"
-            className="h-[200px] w-[200px] "
+            className="h-[180px] w-[180px] "
             resizeMode="contain"
           />
         </View>
@@ -135,7 +135,7 @@ const verify = () => {
             textInputRef.current?.focus();
           }}
         >
-          <View className="px-10 flex-6 py-10 bg-white h-screen rounded-t-3xl  ">
+          <View className="px-10 flex-6 py-8 bg-white h-screen rounded-t-3xl  ">
             <Text className="text-3xl text-center font-bold text-black">
               Verify Your Number
             </Text>
@@ -163,7 +163,7 @@ const verify = () => {
 
               <TouchableOpacity
                 onPress={sendOTP}
-                className="w-full mt-5 rounded-md flex flex-row justify-center p-4 items-center  bg-[#ff6700]"
+                className="w-full mt-3 rounded-md flex flex-row justify-center p-4 items-center  bg-[#ff6700]"
               >
                 {loading ? (
                   <ActivityIndicator size="large" color="#000" />

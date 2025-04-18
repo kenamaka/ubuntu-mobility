@@ -20,7 +20,6 @@ const onboarding = () => {
   const [pageloading, setPageloading] = useState(false);
   const { signOut } = useAuth();
   useEffect(() => {
-    // signOut();
     const preloadImages = async () => {
       try {
         await Promise.all(slides.map((slide) => Asset.loadAsync(slide.image)));
@@ -37,8 +36,8 @@ const onboarding = () => {
   const handleVerify = () => {
     setPageloading(true); // Start loader immediately
     setTimeout(() => {
-      router.push("/(tabs)/home");
-      // router.replace("/(auth)/verify");
+      // router.push("/(tabs)/home");
+      router.replace("/(auth)/verify");
     }, 300); // slight delay to show spinner for UX smoothness
   };
 

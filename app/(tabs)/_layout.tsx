@@ -12,6 +12,23 @@ export default function TabsLayout() {
           tabBarActiveTintColor: "#ff6700",
           tabBarInactiveTintColor: "gray",
           headerShown: false,
+          tabBarShownLabel: false,
+          tabBarStyle: {
+            position: "absolute",
+            borderRadius: 50,
+            overflow: "hidden",
+            marginHorizontal: 20,
+            marginBottom: 20,
+
+            height: 68,
+            backgroundColor: "#fff",
+            paddingTop: 10,
+            paddingBottom: 10, // helps visual balance on different platforms
+          },
+          tabBarItemStyle: {
+            justifyContent: "center",
+            alignItems: "center",
+          },
         }}
       >
         <Tabs.Screen

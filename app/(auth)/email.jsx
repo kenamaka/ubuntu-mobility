@@ -203,7 +203,6 @@ const EmailSignUp = () => {
                 keyboardType="email-address"
                 textContentType="emailAddress"
               />
-              <TextInput />
             </View>
           </View>
         </View>

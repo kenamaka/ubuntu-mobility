@@ -44,7 +44,7 @@ export default function RootLayout() {
           <Stack
             screenOptions={{
               animation: "slide_from_right",
-              animationDuration: 100, // 👈 Decrease to 200ms for a snappier transition
+              animationDuration: 300, // 👈 Decrease to 200ms for a snappier transition
             }}
           >
             <Stack.Screen name="index" options={{ headerShown: false }} />

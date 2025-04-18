@@ -54,12 +54,12 @@ const SocialSignin = () => {
   const handleEmail = () => {
     setLoading(true); // Start loader immediately
     setTimeout(() => {
-      router.push("/(root)/(auth)/email");
+      router.push("/(auth)/email");
     }, 300); // slight delay to show spinner for UX smoothness
   };
 
   return (
-    <View className=" mt-10 items-center justify-center">
+    <View className=" mt-8 items-center justify-center">
       <View className=" h-[1px] flex-1 bg-gray-400" />
 
       <Text>Or</Text>

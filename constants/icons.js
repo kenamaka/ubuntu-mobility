@@ -14,6 +14,7 @@ import google from "../assets/icons/google.png";
 import profile from "../assets/icons/profile.png";
 import apple from "../assets/icons/apple-logo.png";
 import mail from "../assets/icons/mail.png";
+import to from "../assets/icons/to.png";
 export default {
   person,
   left,
@@ -31,4 +32,5 @@ export default {
   lock,
   logout,
   google,
+  to,
 };
