@@ -13,9 +13,9 @@ import {
 import { getLocales } from "expo-localization";
 import { ReactNativeModal } from "react-native-modal";
 import { AppState } from "react-native";
-import { supabase } from "../../lib/supabaseConfig";
+import { supabase } from "../../../lib/supabaseConfig";
 import { Button, Input } from "@rneui/themed";
-import { icons, images } from "../../constants";
+import { icons, images } from "../../../constants";
 import PhoneInput from "react-native-phone-number-input";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
@@ -235,7 +235,7 @@ const verify = () => {
           <TouchableOpacity
             onPress={() => {
               setIsVerified(false);
-              router.push("/(auth)/signup");
+              router.push("/root/(auth)/signup");
             }}
             className="w-full mt-7 mb-7 rounded-full flex flex-row justify-center p-4 items-center bg-[#011228]"
           >

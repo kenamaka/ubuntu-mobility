@@ -3,6 +3,8 @@ import { ActivityIndicator, LogBox } from "react-native";
 import { useAuth } from "@clerk/clerk-expo";
 import { View, Text } from "react-native";
 import React, { useEffect } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Loading from "@/components/Loading";
 
 LogBox.ignoreLogs([
   "Support for defaultProps will be removed from function components",
@@ -14,16 +16,12 @@ const index = () => {
   useEffect(() => {
     if (!isLoaded) return;
     if (isSignedIn) {
-      router.replace("/(tabs)/home");
+      router.replace("/root/(tabs)/home");
     } else {
-      router.replace("/(auth)/onboarding");
+      router.replace("/root/(auth)/onboarding");
     }
   }, [isLoaded]);
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <ActivityIndicator size="large" color="#ff6700" />
-    </View>
-  );
+  return <Loading />;
 };
 
 export default index;

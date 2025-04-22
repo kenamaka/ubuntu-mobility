@@ -15,8 +15,10 @@ import profile from "../assets/icons/profile.png";
 import apple from "../assets/icons/apple-logo.png";
 import mail from "../assets/icons/mail.png";
 import to from "../assets/icons/to.png";
+import date from "../assets/icons/date.png";
 export default {
   person,
+  date,
   left,
   email,
   right,

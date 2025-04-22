@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import React, { useEffect, useRef } from "react";
 import PhoneInput from "react-native-phone-number-input";
-import { images } from "../../constants";
+import { images } from "../../../constants";
 import { getLocales } from "expo-localization";
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -138,7 +138,7 @@ const verify = () => {
         />
         <View className="flex flex-col   items-center justify-center">
           <Image
-            source={images.auth}
+            source={images.otp}
             alt="Ubuntu logo"
             className="h-[250px] w-[250px] "
             resizeMode="contain"
@@ -238,7 +238,7 @@ const verify = () => {
           </Text>
           <TouchableOpacity
             onPress={() => {
-              router.replace("/(root)/(auth)/signup");
+              router.replace("/root/(auth)/signup");
             }}
             className="w-full mt-7 rounded-full flex flex-row justify-center p-4 items-center shadow-md shadow-neutral-400/70 bg-[#ff6700]"
           >

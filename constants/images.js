@@ -10,8 +10,10 @@ import icon_white from "../assets/images/icon-white.png";
 import otp from "../assets/images/otp.png";
 import check from "../assets/images/check.png";
 import setup from "../assets/images/setup.jpg";
+import noResult from "../assets/images/no-result.png";
 export default {
   slide1,
+  noResult,
   setup,
   slide2,
   slide3,

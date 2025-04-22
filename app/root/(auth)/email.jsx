@@ -15,7 +15,8 @@ import { useSignIn, useSignUp } from "@clerk/clerk-expo";
 import ReactNativeModal from "react-native-modal";
 import { ActivityIndicator } from "react-native";
 import { useAuth } from "@clerk/clerk-expo";
-import { supabase } from "../../lib/supabaseConfig";
+import { supabase } from "../../../lib/supabaseConfig"; // Adjust the import path as necessary
+import Loading from "../../../components/Loading";
 const generatePassword = () => {
   return Math.floor(10000000 + Math.random() * 90000000).toString();
 };
@@ -160,19 +161,15 @@ const EmailSignUp = () => {
     setPageLoading(true);
     setTimeout(() => {
       if (isRegistered === "yes") {
-        router.replace("/(tabs)/home");
+        router.replace("/root/(tabs)/home");
       } else {
-        router.replace("/(auth)/signup"); // Or whatever your setup path is
+        router.replace("/root/(auth)/signup"); // Or whatever your setup path is
       }
     }, 400);
   };
 
   if (pageloading) {
-    return (
-      <SafeAreaView className="flex-1 items-center justify-center bg-white">
-        <ActivityIndicator size="large" color="#ff6700" />
-      </SafeAreaView>
-    );
+    return <Loading />;
   }
   return (
     <SafeAreaView className="flex-1 h-full px-10 py-6 bg-white">
@@ -208,7 +205,7 @@ const EmailSignUp = () => {
         </View>
         <View className="flex flex-row items-center justify-between mt-10">
           <TouchableOpacity
-            onPress={() => router.push("/(auth)/verify")}
+            onPress={() => router.push("/root/(auth)/verify")}
             className=" mt-7 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100"
           >
             <Image source={icons.left} className="h-[16px] w-[16px]" />

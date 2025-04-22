@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { icons, images } from "../../constants";
+import { icons, images } from "../../../constants";
 import { useState } from "react";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
@@ -66,7 +66,7 @@ const Signup = () => {
       Alert.alert("Error", error.message);
       setLoading(false);
     } else {
-      router.replace("/(tabs)/home");
+      router.replace("/root/(tabs)/home");
     }
   };
 

@@ -6,13 +6,14 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import { icons, images } from "../../constants";
+import { icons, images } from "../../../constants";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Swiper from "react-native-swiper";
 import slides from "./slides";
 import { useRouter } from "expo-router";
 import { Asset } from "expo-asset";
 import { useAuth } from "@clerk/clerk-expo";
+import Loading from "@/components/Loading";
 const onboarding = () => {
   const router = useRouter();
   const swiperRef = useRef<Swiper>(null);
@@ -37,23 +38,15 @@ const onboarding = () => {
     setPageloading(true); // Start loader immediately
     setTimeout(() => {
       // router.push("/(tabs)/home");
-      router.replace("/(auth)/verify");
+      router.replace("/root/(auth)/verify");
     }, 300); // slight delay to show spinner for UX smoothness
   };
 
   if (pageloading) {
-    return (
-      <SafeAreaView className="flex-1 items-center justify-center bg-white">
-        <ActivityIndicator size="large" color="#ff6700" />
-      </SafeAreaView>
-    );
+    return <Loading />;
   }
   if (loading) {
-    return (
-      <SafeAreaView className="flex-1 items-center justify-center bg-white">
-        <ActivityIndicator size="large" color="#ff6700" />
-      </SafeAreaView>
-    );
+    return <Loading />;
   }
 
   return (

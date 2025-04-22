@@ -54,7 +54,7 @@ const SocialSignin = () => {
   const handleEmail = () => {
     setLoading(true); // Start loader immediately
     setTimeout(() => {
-      router.push("/(auth)/email");
+      router.push("/root/(auth)/email");
     }, 300); // slight delay to show spinner for UX smoothness
   };
 
