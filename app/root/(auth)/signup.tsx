@@ -62,7 +62,7 @@ const Signup = () => {
     });
 
     if (error) {
-      console.error("Error inserting data:", error.message);
+      // console.error("Error inserting data:", error.message);
       Alert.alert("Error", error.message);
       setLoading(false);
     } else {
