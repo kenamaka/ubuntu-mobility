@@ -16,8 +16,12 @@ import apple from "../assets/icons/apple-logo.png";
 import mail from "../assets/icons/mail.png";
 import to from "../assets/icons/to.png";
 import date from "../assets/icons/date.png";
+import selectedMarker from "../assets/icons/selected-marker.png";
+import marker from "../assets/icons/marker.png";
 export default {
   person,
+  marker,
+  selectedMarker,
   date,
   left,
   email,

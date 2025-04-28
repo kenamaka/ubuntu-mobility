@@ -9,10 +9,12 @@ import Loading from "@/components/Loading";
 const rides = () => {
   const loading = false;
   return (
-    <SafeAreaView className="bg-gray-200 items-center justify-center flex-1 px-4 pt-10">
-      <Text className="text-3xl font-bold text-gray-900 mb-4">Rides</Text>
+    <SafeAreaView className="bg-gray-200 flex-1 p-4  pt-10">
+      <Text className="text-3xl font-bold text-gray-900 mb-4">
+        Recent Rides
+      </Text>
       <FlatList
-        data={[]}
+        data={mock_rides?.slice(0, 5)}
         renderItem={({ item }) => <RecentRideCard ride={item} />}
         className=""
         keyboardShouldPersistTaps="handled"

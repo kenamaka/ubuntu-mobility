@@ -101,8 +101,8 @@ declare interface PaymentProps {
 }
 
 declare interface LocationStore {
-  userLatitude: number | null;
-  userLongitude: number | null;
+  userLatitude: number;
+  userLongitude: number;
   userAddress: string | null;
   destinationLatitude: number | null;
   destinationLongitude: number | null;
