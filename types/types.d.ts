@@ -140,3 +140,13 @@ declare interface DriverCardProps {
   selected: number;
   setSelected: () => void;
 }
+
+import { BottomSheetProps as GorhomBottomSheetProps } from "@gorhom/bottom-sheet";
+
+export interface BottomSheetTestProps extends GorhomBottomSheetProps {
+  // Optional: You can add your custom props here, if needed
+  onSheetChange?: (index: number) => void;
+  snapPoints: string[]; // Array of snap points (strings)
+  index?: number; // Default index to open the BottomSheet at
+  onRecenter?: () => void; // Optional function to recenter the map or reset something
+}

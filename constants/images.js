@@ -11,8 +11,12 @@ import otp from "../assets/images/otp.png";
 import check from "../assets/images/check.png";
 import setup from "../assets/images/setup.jpg";
 import noResult from "../assets/images/no-result.png";
+import dummy_map from "../assets/images/dummy-map.jpg";
+import gps from "../assets/icons/location.png";
+
 export default {
   slide1,
+  dummy_map,
   noResult,
   setup,
   slide2,
@@ -25,4 +29,5 @@ export default {
   icon_white,
   otp,
   check,
+  gps,
 };

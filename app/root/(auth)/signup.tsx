@@ -89,6 +89,7 @@ const Signup = () => {
             <Text className="text-lg font-medium text-black mb-3">
               First Name
             </Text>
+
             <View className=" flex flex-row justify-start items-center relative border-b-2 focus:border-neutral-500  rounded-md border border-neutral-100   bg-neutral-100 ">
               <Image source={icons.person} className="h-6 w-6 ml-4" />
               <TextInput

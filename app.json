@@ -1,53 +1,33 @@
 {
   "expo": {
     "name": "Ubuntu Mobility",
-    "slug": "Ubuntu-Mobility",
+    "slug": "ubuntu-mobility",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon-blue.png",
+    "icon": "./assets/logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "platforms": ["ios", "android"],
     "splash": {
-      "image": "./assets/images/icon-blue.png",
+      "image": "./assets/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ff6700"
     },
-    "newArchEnabled": true,
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#fffffff"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff"
       },
       "package": "com.kenamaka550.UbuntuMobility"
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/icon-blue.png"
+      "favicon": "./assets/icon.png"
     },
-    "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/icon-onrange.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ff6700"
-        }
-      ],
-      "expo-localization"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
+    "plugins": ["expo-router", "expo-localization"],
     "extra": {
-      "router": {
-        "origin": false
-      },
       "eas": {
         "projectId": "0ca4e47a-7950-4de3-8136-956de4ed5f16"
       }
