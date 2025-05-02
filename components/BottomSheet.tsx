@@ -1,51 +1,12 @@
-// import React, { useRef } from "react";
-// import { StyleSheet, Text } from "react-native";
-// import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
-
-// type BottomSheetTestProps = {
-//   onSheetChange?: (index: number) => void;
-// };
-
-// export default function BottomSheetTest({
-//   onSheetChange,
-// }: BottomSheetTestProps) {
-//   const bottomSheetRef = useRef<BottomSheet>(null);
-
-//   return (
-//     <BottomSheet
-//       ref={bottomSheetRef}
-//       index={1}
-//       snapPoints={["60%"]}
-//       onChange={(index) => {
-//         if (onSheetChange) {
-//           onSheetChange(index);
-//         }
-//       }}
-//     >
-//       <BottomSheetScrollView contentContainerStyle={styles.content}>
-//         <Text>🎉 This is the bottom sheet content!</Text>
-//         <Text>Swipe up to expand it.</Text>
-//       </BottomSheetScrollView>
-//     </BottomSheet>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   content: {
-//     alignItems: "center",
-//     padding: 20,
-//   },
-// });
-
-import { images } from "@/constants";
+import { icons, images } from "@/constants";
 import BottomSheet, { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
-import React, { useRef } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-import SearchInput from "./SearchInput";
+import React, { useRef, useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
 type BottomSheetTestProps = {
   onSheetChange?: (index: number) => void;
-  snapPoints: string[]; // Add this
+  snapPoints: string[]; // ["40%", "60%", "95%"]
   address: string;
 };
 
@@ -55,37 +16,80 @@ export default function BottomSheetTest({
   address,
 }: BottomSheetTestProps) {
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const [isSearchMode, setIsSearchMode] = useState(false);
+
+  const handleSearchPress = () => {
+    setIsSearchMode(true);
+    bottomSheetRef.current?.snapToIndex(2); // 95% height
+  };
+
+  const handleSheetChange = (index: number) => {
+    if (onSheetChange) onSheetChange(index);
+    if (index === 2 && !isSearchMode) {
+      setIsSearchMode(true); // Show search inputs when sheet is fully expanded
+    }
+    if (index <= 1 && isSearchMode) {
+      setIsSearchMode(false); // Hide search inputs when sheet is not expanded
+    }
+  };
 
   return (
     <BottomSheet
+      ref={bottomSheetRef}
       snapPoints={snapPoints}
-      index={1}
+      index={1} // Default index to 60%
       enablePanDownToClose={false}
       enableContentPanningGesture={true}
       enableHandlePanningGesture={true}
-      ref={bottomSheetRef}
-      onChange={(index) => {
-        if (onSheetChange) {
-          onSheetChange(index);
-        }
-      }}
+      onChange={handleSheetChange}
     >
       <BottomSheetScrollView contentContainerStyle={styles.content}>
-        <View className="flex flex-row items-center  justify-end top-10">
-          <Image
-            source={images.gps}
-            style={{
-              width: 20, // equivalent to w-5 in Tailwind (5 * 4px = 20px)
-              height: 20, // equivalent to h-5 in Tailwind
-              transform: [{ skewX: "-6deg" }], // Applying skew here
-            }}
-            resizeMode="contain"
-          />
-          <Text className="text-dark text-lg font-bold">{address}</Text>
-        </View>
+        {/* If not in search mode, show location/address input */}
+        {!isSearchMode ? (
+          <>
+            <View style={styles.addressContainer}>
+              <Image
+                source={images.gps}
+                style={styles.gpsIcon}
+                resizeMode="contain"
+              />
+              <Text style={styles.addressText}>{address}</Text>
+            </View>
+            <View style={styles.searchContainer}>
+              <TouchableOpacity
+                onPress={handleSearchPress}
+                className="w-full  rounded-md flex flex-row  p-4 items-center  bg-[#f3f3f3] "
+              >
+                <Image
+                  source={icons.search}
+                  className="w-7 h-7"
+                  resizeMode="contain"
+                />
+                <Text className="text-xl font-bold text-[#cfcfcf] ">
+                  {" "}
+                  {address}{" "}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        ) : (
+          // If in search mode, show pickup/destination inputs
+          <View style={styles.searchContainer}>
+            <Text style={styles.searchTitle}>Search</Text>
 
-        {/* <BottomSheetTextInput style={styles.input} /> */}
-        <SearchInput />
+            <Text style={styles.inputLabel}>Pickup</Text>
+            <BottomSheetTextInput
+              style={styles.input}
+              placeholder="Enter pickup location"
+            />
+
+            <Text style={styles.inputLabel}>Destination</Text>
+            <BottomSheetTextInput
+              style={styles.input}
+              placeholder="Enter destination"
+            />
+          </View>
+        )}
       </BottomSheetScrollView>
     </BottomSheet>
   );
@@ -96,13 +100,60 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 6,
   },
-  input: {
+  addressContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "center",
     marginTop: 8,
+    marginBottom: 20,
+  },
+  gpsIcon: {
+    width: 20,
+    height: 20,
+    transform: [{ skewX: "-6deg" }],
+  },
+  addressText: {
+    color: "#333",
+    fontSize: 18,
+    fontWeight: "bold",
+    marginLeft: 10,
+  },
+  searchButton: {
     marginHorizontal: 16,
-    marginBottom: 10,
+    marginTop: 16,
+    width: "100%",
+  },
+  searchButtonContainer: {
+    backgroundColor: "#f0f0f0",
+    borderRadius: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  searchButtonText: {
+    color: "#555",
+    fontSize: 16,
+  },
+  searchContainer: {
+    paddingHorizontal: 16,
+    marginTop: 16,
+    width: "100%",
+  },
+  searchTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
+  inputLabel: {
+    color: "#555",
+    fontSize: 14,
+    marginBottom: 8,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
     borderRadius: 8,
     fontSize: 16,
-    lineHeight: 20,
-    padding: 8,
+    padding: 12,
+    marginBottom: 16,
   },
 });

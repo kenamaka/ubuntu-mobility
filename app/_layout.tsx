@@ -9,6 +9,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ActivityIndicator } from "react-native";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -40,23 +41,25 @@ export default function RootLayout() {
   return (
     <>
       <ClerkProvider tokenCache={tokenCache}>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <Stack
-            screenOptions={{
-              animation: "slide_from_right",
-              animationDuration: 300, // 👈 Decrease to 200ms for a snappier transition
-            }}
-          >
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="root" options={{ headerShown: false }} />
+        <BottomSheetModalProvider>
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <Stack
+              screenOptions={{
+                animation: "slide_from_right",
+                animationDuration: 300, // 👈 Decrease to 200ms for a snappier transition
+              }}
+            >
+              <Stack.Screen name="index" options={{ headerShown: false }} />
+              <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="root" options={{ headerShown: false }} />
 
-            <Stack.Screen name="+not-found" />
-          </Stack>
-          <StatusBar style="dark" backgroundColor="transparent" translucent />
-          {/* <ActivityIndicator size="large" color="black" /> */}
-        </GestureHandlerRootView>
+              <Stack.Screen name="+not-found" />
+            </Stack>
+            <StatusBar style="dark" backgroundColor="transparent" translucent />
+            {/* <ActivityIndicator size="large" color="black" /> */}
+          </GestureHandlerRootView>
+        </BottomSheetModalProvider>
       </ClerkProvider>
     </>
   );

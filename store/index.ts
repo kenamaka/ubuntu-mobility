@@ -48,3 +48,15 @@ export const useDriverStore = create<DriverStore>((set) => ({
   setDrivers: (drivers: MarkerData[]) => set(() => ({ drivers })),
   clearSelectedDriver: () => set(() => ({ selectedDriver: null })),
 }));
+
+// tabbar visibility store
+
+interface TabBarStore {
+  isTabBarVisible: boolean;
+  setTabBarVisible: (visible: boolean) => void;
+}
+
+export const useTabBarStore = create<TabBarStore>((set) => ({
+  isTabBarVisible: true,
+  setTabBarVisible: (visible) => set({ isTabBarVisible: visible }),
+}));

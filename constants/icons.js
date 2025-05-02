@@ -18,6 +18,7 @@ import to from "../assets/icons/to.png";
 import date from "../assets/icons/date.png";
 import selectedMarker from "../assets/icons/selected-marker.png";
 import marker from "../assets/icons/marker.png";
+import search from "../assets/icons/search.png";
 export default {
   person,
   marker,
@@ -39,4 +40,5 @@ export default {
   logout,
   google,
   to,
+  search,
 };

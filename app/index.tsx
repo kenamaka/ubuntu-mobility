@@ -5,6 +5,7 @@ import { View, Text } from "react-native";
 import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Loading from "@/components/Loading";
+import "react-native-get-random-values";
 
 LogBox.ignoreLogs([
   "Support for defaultProps will be removed from function components",
