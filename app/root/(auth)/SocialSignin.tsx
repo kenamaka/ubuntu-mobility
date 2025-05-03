@@ -64,28 +64,28 @@ const SocialSignin = () => {
 
       <Text>Or</Text>
       <View className=" h-[1px] flex-1 bg-gray-400" />
-      <TouchableOpacity className="w-full mt-4 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100">
+      <TouchableOpacity className="w-full mt-4 rounded-md flex flex-row justify-center p-3 items-center  bg-gray-100">
         <Image className="w-5 h-5 mx-2" source={icons.google} />
-        <Text className="text-xl font-semibold text-black">
+        <Text className="text-lg font-semibold text-black">
           Continue with Google
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity className="w-full mt-4 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100">
+      <TouchableOpacity className="w-full mt-4 rounded-md flex flex-row justify-center p-3 items-center  bg-gray-100">
         <Image className="w-5 h-5 mx-2" source={icons.apple} />
-        <Text className="text-xl font-semibold text-black">
+        <Text className="text-lg font-semibold text-black">
           Continue with Apple
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={handleEmail}
-        className="w-full mt-4 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100"
+        className="w-full mt-4 rounded-md flex flex-row justify-center p-3 items-center  bg-gray-100"
       >
         {loading ? (
           <ActivityIndicator size="large" color="#000" />
         ) : (
           <>
             <Image className="w-5 h-5 mx-2" source={icons.mail} />
-            <Text className="text-xl font-semibold text-black">
+            <Text className="text-lg font-semibold text-black">
               Continue with Email
             </Text>
           </>

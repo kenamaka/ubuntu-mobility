@@ -114,14 +114,14 @@ const verify = () => {
         <Image
           source={images.icon_blue}
           alt="Ubuntu logo"
-          className="h-[70px] w-[70px] "
+          className="h-[60px] w-[60px] "
           resizeMode="contain"
         />
         <View className="flex flex-col   items-center justify-center mb-10">
           <Image
             source={images.otp}
             alt="Ubuntu logo"
-            className="h-[180px] w-[180px] "
+            className="h-[170px] w-[170px] "
             resizeMode="contain"
           />
         </View>
@@ -136,7 +136,7 @@ const verify = () => {
           }}
         >
           <View className="px-10 flex-6 py-8 bg-white h-screen rounded-t-3xl  ">
-            <Text className="text-3xl text-center font-bold text-black">
+            <Text className="text-2xl text-center font-bold text-black">
               Verify Your Number
             </Text>
 
@@ -163,12 +163,12 @@ const verify = () => {
 
               <TouchableOpacity
                 onPress={sendOTP}
-                className="w-full mt-3 rounded-md flex flex-row justify-center p-4 items-center  bg-[#ff6700]"
+                className="w-full mt-3 rounded-md flex flex-row justify-center p-3 items-center  bg-[#ff6700]"
               >
                 {loading ? (
                   <ActivityIndicator size="large" color="#000" />
                 ) : (
-                  <Text className="text-xl font-bold text-black">Send OTP</Text>
+                  <Text className="text-lg font-bold text-black">Send OTP</Text>
                 )}
               </TouchableOpacity>
               <SocialSignin />

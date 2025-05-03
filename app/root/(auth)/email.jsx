@@ -182,16 +182,16 @@ const EmailSignUp = () => {
             resizeMode="contain"
           />
         </View>
-        <Text className="text-3xl font-bold text-black mt-10">
+        <Text className="text-2xl font-bold text-black mt-10">
           What's your email address?
         </Text>
         <View className="mt-14">
           <View className=" mt-6">
             <Text className="text-lg font-medium text-black mb-3">Email</Text>
-            <View className=" p-2 flex flex-row justify-start items-center relative border-b-2 focus:border-neutral-500 rounded-md border border-neutral-100 bg-neutral-100">
-              <Image source={icons.email} className="h-7 w-7 ml-4" />
+            <View className="  flex flex-row justify-start items-center relative border-b-2 focus:border-neutral-500 rounded-md border border-neutral-100 bg-neutral-100">
+              <Image source={icons.email} className="h-6 w-6 ml-4" />
               <TextInput
-                className="w-full text-lg"
+                className="w-full text-md"
                 placeholder="Enter your email address"
                 autoFocus
                 value={email} // Bind the state here
@@ -206,14 +206,14 @@ const EmailSignUp = () => {
         <View className="flex flex-row items-center justify-between mt-10">
           <TouchableOpacity
             onPress={() => router.push("/root/(auth)/verify")}
-            className=" mt-7 rounded-md flex flex-row justify-center p-4 items-center  bg-gray-100"
+            className=" mt-7 rounded-md flex flex-row justify-center p-3 items-center  bg-gray-100"
           >
             <Image source={icons.left} className="h-[16px] w-[16px]" />
             <Text className="text-lg font-bold text-black "> Back </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={handleEmailSignup} // Call the sign-up function when Next is pressed
-            className=" mt-7 rounded-md flex flex-row justify-center p-4 items-center   bg-[#ff6700]"
+            className=" mt-7 rounded-md flex flex-row justify-center p-3 items-center   bg-[#ff6700]"
           >
             {loading ? (
               <ActivityIndicator size="large" color="#000000" />

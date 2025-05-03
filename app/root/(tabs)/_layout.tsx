@@ -68,7 +68,6 @@ export default function TabsLayout() {
           tabBarInactiveTintColor: "gray",
           headerShown: false,
           tabBarStyle: tabBarStyle,
-          tabBarShowLabel: false,
           tabBarItemStyle: {
             justifyContent: "center",
             alignItems: "center",

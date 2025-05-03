@@ -290,7 +290,7 @@ const Home = () => {
             bottom: 20,
             right: 20,
             backgroundColor: "white",
-            padding: 12,
+            padding: 10,
             borderRadius: 28,
             shadowColor: "#000",
             shadowOpacity: 0.1,

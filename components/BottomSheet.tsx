@@ -47,27 +47,28 @@ export default function BottomSheetTest({
         {/* If not in search mode, show location/address input */}
         {!isSearchMode ? (
           <>
-            <View style={styles.addressContainer}>
+            {/* <View style={styles.addressContainer}>
               <Image
                 source={images.gps}
                 style={styles.gpsIcon}
                 resizeMode="contain"
               />
               <Text style={styles.addressText}>{address}</Text>
-            </View>
-            <View style={styles.searchContainer}>
+            </View> */}
+
+            <View className="mx-4 my-4 w-full">
               <TouchableOpacity
                 onPress={handleSearchPress}
-                className="w-full  rounded-md flex flex-row  p-4 items-center  bg-[#f3f3f3] "
+                className=" w-full  rounded-md flex-row items-center p-4 bg-gray-100 "
               >
                 <Image
                   source={icons.search}
-                  className="w-7 h-7"
+                  className="w-6 h-6 "
                   resizeMode="contain"
                 />
-                <Text className="text-xl font-bold text-[#cfcfcf] ">
+                <Text className="text-xl font-bold text-gray-300">
                   {" "}
-                  {address}{" "}
+                  Where are you going today?
                 </Text>
               </TouchableOpacity>
             </View>
@@ -99,6 +100,8 @@ const styles = StyleSheet.create({
   content: {
     alignItems: "center",
     padding: 6,
+    marginLeft: 10,
+    marginRight: 10,
   },
   addressContainer: {
     flexDirection: "row",

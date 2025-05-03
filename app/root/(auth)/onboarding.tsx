@@ -50,16 +50,16 @@ const onboarding = () => {
   }
 
   return (
-    <SafeAreaView className="flex-1 px-10 py-6 bg-white">
-      <View className="flex-row justify-between items-center w-full py-5 mb-5">
+    <SafeAreaView className="flex-1 px-10 py-4 bg-white">
+      <View className="flex-row justify-between items-center w-full py-4 mb-5">
         <Image
           source={images.icon_black}
-          className="h-[70px] w-[70px]"
+          className="h-[60px] w-[60px]"
           resizeMode="contain"
         />
         <TouchableOpacity
           onPress={handleVerify}
-          className="   flex flex-row justify-center p-4 items-center    bg-transparent   "
+          className="   flex flex-row justify-center p-4 items-center    bg-transparent    "
         >
           <Text className="text-2xl font-bold">Skip </Text>
 
@@ -76,16 +76,16 @@ const onboarding = () => {
       >
         {slides.map((item: any, index: number) => (
           <View key={index} className="flex items-center  justify-center p-0">
-            <View className="items-center mt-5">
+            <View className="items-center mt-4">
               <Image
                 source={item.image}
-                className="w-[300px] h-[300px] "
+                className="w-[270px] h-[270px] "
                 resizeMode="contain"
                 alt="onboarding image"
               />
             </View>
             <View className="items-left  w-full ">
-              <Text className="text-black text-[42px] font-extrabold mt-5">
+              <Text className="text-black text-4xl font-extrabold mt-4">
                 {item.title}
               </Text>
             </View>
