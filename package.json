@@ -25,7 +25,7 @@
     "@react-native-google-signin/google-signin": "^13.2.0",
     "@rneui/themed": "^4.0.0-rc.8",
     "@supabase/supabase-js": "^2.49.4",
-    "expo": "^53.0.6",
+    "expo": "~52.0.41",
     "expo-auth-session": "^6.0.3",
     "expo-blur": "~14.0.3",
     "expo-constants": "~17.0.8",

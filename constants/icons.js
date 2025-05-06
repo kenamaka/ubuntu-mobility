@@ -19,7 +19,11 @@ import date from "../assets/icons/date.png";
 import selectedMarker from "../assets/icons/selected-marker.png";
 import marker from "../assets/icons/marker.png";
 import search from "../assets/icons/search.png";
+import target from "../assets/icons/target.png";
+import notfound from "../assets/icons/no-results.png";
+
 export default {
+  notfound,
   person,
   marker,
   selectedMarker,
@@ -41,4 +45,5 @@ export default {
   google,
   to,
   search,
+  target,
 };

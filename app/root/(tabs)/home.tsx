@@ -166,7 +166,7 @@ const Home = () => {
     new Animated.Value(Dimensions.get("window").height * 0.6)
   ).current;
 
-  const snapPoints = ["34%", "95%"];
+  const snapPoints = ["34%", "96%"];
   const navigation = useNavigation(); // Use this for navigation
 
   const { userAddress } = useLocationStore();

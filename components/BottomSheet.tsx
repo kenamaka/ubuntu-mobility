@@ -1,8 +1,11 @@
 import { icons, images } from "@/constants";
-import BottomSheet, { BottomSheetTextInput } from "@gorhom/bottom-sheet";
-import { BottomSheetScrollView } from "@gorhom/bottom-sheet";
+import BottomSheet, {
+  BottomSheetTextInput,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
 import React, { useRef, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Search from "./Search";
 
 type BottomSheetTestProps = {
   onSheetChange?: (index: number) => void;
@@ -43,7 +46,7 @@ export default function BottomSheetTest({
       enableHandlePanningGesture={true}
       onChange={handleSheetChange}
     >
-      <BottomSheetScrollView contentContainerStyle={styles.content}>
+      <BottomSheetView style={styles.content}>
         {/* If not in search mode, show location/address input */}
         {!isSearchMode ? (
           <>
@@ -75,23 +78,11 @@ export default function BottomSheetTest({
           </>
         ) : (
           // If in search mode, show pickup/destination inputs
-          <View style={styles.searchContainer}>
-            <Text style={styles.searchTitle}>Search</Text>
-
-            <Text style={styles.inputLabel}>Pickup</Text>
-            <BottomSheetTextInput
-              style={styles.input}
-              placeholder="Enter pickup location"
-            />
-
-            <Text style={styles.inputLabel}>Destination</Text>
-            <BottomSheetTextInput
-              style={styles.input}
-              placeholder="Enter destination"
-            />
+          <View className="mx-4 my-4 w-full">
+            <Search />
           </View>
         )}
-      </BottomSheetScrollView>
+      </BottomSheetView>
     </BottomSheet>
   );
 }
